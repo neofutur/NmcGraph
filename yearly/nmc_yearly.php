@@ -31,25 +31,25 @@ $MyData->setAbscissa("Time");
 //$MyData->setSerieDescription("Time","Hour of the day");
 
 /* Create the pChart object */
-$myPicture = new pImage(700,230,$MyData);
+$myPicture = new pImage(800,430,$MyData);
  
 /* Draw the background */
 $Settings = array("R"=>170, "G"=>183, "B"=>87, "Dash"=>1, "DashR"=>190, "DashG"=>203, "DashB"=>107);
-$myPicture->drawFilledRectangle(0,0,700,230,$Settings);
+$myPicture->drawFilledRectangle(0,0,800,430,$Settings);
  
 /* Overlay with a gradient */
 $Settings = array("StartR"=>219, "StartG"=>231, "StartB"=>139, "EndR"=>1, "EndG"=>138, "EndB"=>68, "Alpha"=>50);
-$myPicture->drawGradientArea(0,0,700,230,DIRECTION_VERTICAL,$Settings);
+$myPicture->drawGradientArea(0,0,800,430,DIRECTION_VERTICAL,$Settings);
  
 /* Draw the border */
-$myPicture->drawRectangle(0,0,699,229,array("R"=>0,"G"=>0,"B"=>0));
+$myPicture->drawRectangle(0,0,799,429,array("R"=>0,"G"=>0,"B"=>0));
  
 /* Write the title */
 $myPicture->setFontProperties(array("FontName"=>"../../fonts/verdana.ttf","FontSize"=>9));
 $myPicture->drawText(70,45,"NMC price in BTC at date $date",array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMLEFT));
  
 /* Draw the 1st scale */
-$myPicture->setGraphArea(70,60,660,190);
+$myPicture->setGraphArea(70,60,760,390);
 $myPicture->drawFilledRectangle(70,60,660,190,array("R"=>255,"G"=>255,"B"=>255,"Surrounding"=>-200,"Alpha"=>10));
 
 $AxisBoundaries = array(0=>array("Min"=>$minscale,"Max"=>$maxscale));
