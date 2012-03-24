@@ -75,10 +75,10 @@
 <form action="./daily/nmc_daily.php" method="post">
 <label for="day">choose day</label>
 <input type="text" id="day" name="day" class="datepicker" />
-<br />Optionnaly choose the <label for="xsize">width</label>
-<input type="text" class="xsize" name="xsize" />
-and <label for="ysize">Height</label> for your graph
-<input type="text" class="ysize" name="ysize" />
+<br />Optionnaly choose the <label for="xsize1">width</label>
+<input type="text" class="xsize" id="xsize1" name="xsize" value="800" />
+<br />and <label for="ysize1">Height</label> for your graph
+<input type="text" class="ysize" id="ysize1" name="ysize" value="600" />
 <input type="submit" value="go !" />
 </form>
 </div>
@@ -88,10 +88,10 @@ and <label for="ysize">Height</label> for your graph
 <form action="./monthly/nmc_monthly.php" method="post">
 <label for="month">Choose month</label>
 <input type="text" id="month" name="month" class="datepicker" />
-<br />Optionnaly choose the <label for="xsize">width</label>
-<input type="text" class="xsize" name="xsize" />
-and <label for="ysize">Height</label> for your graph
-<input type="text" class="ysize" name="ysize" />
+<br />Optionnaly choose the <label for="xsize2">width</label>
+<input type="text" class="xsize" id="xsize2" name="xsize"  value="800" />
+<br />and <label for="ysize2">Height</label> for your graph
+<input type="text" class="ysize" id="ysize2" name="ysize" value="600" />
 <input type="submit" value="Go !" />
 
 </form>
@@ -103,10 +103,10 @@ and <label for="ysize">Height</label> for your graph
 <form action="./yearly/nmc_yearly.php" method="post">
 <label for="day">choose year</label>
 <input type="text" id="year" name="year" class="datepicker" />
-<br />Optionnaly choose the <label for="xsize">width</label>
-<input type="text" class="xsize" name="xsize" />
-and <label for="ysize">Height</label> for your graph
-<input type="text" class="ysize" name="ysize" />
+<br />Optionnaly choose the <label for="xsize3">width</label>
+<input type="text" class="xsize" id="xsize3" name="xsize" value="800" />
+<br />and <label for="ysize3">Height</label> for your graph
+<input type="text" class="ysize" id="ysize3" name="ysize" value="600"  />
 
 <input type="submit" value="go !" />
 
