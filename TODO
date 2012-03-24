@@ -1,5 +1,6 @@
 1
 fix labels on the yearly X scale
+add caching
 2
 be able to choose graph size
 3
