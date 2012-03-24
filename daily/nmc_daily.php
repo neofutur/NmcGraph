@@ -6,7 +6,7 @@ include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
 
-if ( isset( $_POST ) && isset( $_POST["day"] ) )
+if ( isset( $_POST ) && isset( $_POST["day"] ) && is_numeric($_POST["day"]) )
 {
  //received as 03/15/2012 -> 2012-03-01
  $date=$_POST["day"];

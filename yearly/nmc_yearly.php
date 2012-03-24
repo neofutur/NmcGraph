@@ -6,14 +6,14 @@ include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
 
-if ( isset( $_POST ) && isset( $_POST["year"] ) )
+if ( isset( $_POST ) && isset( $_POST["year"] ) && is_numeric($_POST["year"]) )
 {
  //received as 03/15/2012 -> 2012
  $date = $_POST["year"];
  //$date = substr($_POST["year"], 6,4);
  //echo $date;exit;
 }
-else $date="2011";
+else $date="2012";
 
 $minscale=null; $maxscale=null;
 $type="yearly"; $interval="1-day";
