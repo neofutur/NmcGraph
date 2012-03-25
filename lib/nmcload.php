@@ -14,7 +14,7 @@ function load_nmc_data($MyData, $date = "2011-06-09", $type="daily", &$minscale,
 $filename = "../data/$type/namecoin_$date.csv";
 //printf("filename : $filename <br />\n");
 
-$csvfile=fopen ("../data/$type/namecoin_$date.csv","r");
+$csvfile=fopen ("../data/$type/namecoin_$date.csv","r") or die("can't open file");
 
 if ( $type == "daily" )   loadfile   ($MyData, $csvfile, $date, $minscale, $maxscale, $interval);
 if ( $type == "weekly" )  loadfile   ($MyData, $csvfile, $date, $minscale, $maxscale, $interval);
