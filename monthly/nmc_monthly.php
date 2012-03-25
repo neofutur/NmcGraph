@@ -6,7 +6,7 @@ include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
 
-if ( isset( $_POST ) && isset( $_POST["month"] ) && is_numeric($_POST["month"] ) ) 
+if ( isset( $_POST ) && isset( $_POST["month"] ) ) 
 { $date = $_POST["month"]; }
 else $date="2011-06";
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 ) { $xsize = $_POST["xsize"]; }
