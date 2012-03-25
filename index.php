@@ -81,6 +81,7 @@
 <input type="text" class="ysize" id="ysize1" name="ysize" value="600" />
 <input type="submit" value="go !" />
 </form>
+<b> max size for graphs is 1024x768 </b>
 </div>
 
 <h2>monthly data</h2>
@@ -93,10 +94,9 @@
 <br />and <label for="ysize2">Height</label> for your graph
 <input type="text" class="ysize" id="ysize2" name="ysize" value="600" />
 <input type="submit" value="Go !" />
-
 </form>
+<b> max size for graphs is 1024x768 </b>
 </div>
-
 
 <h2>yearly data</h2>
 <div class="demo">
@@ -107,10 +107,9 @@
 <input type="text" class="xsize" id="xsize3" name="xsize" value="800" />
 <br />and <label for="ysize3">Height</label> for your graph
 <input type="text" class="ysize" id="ysize3" name="ysize" value="600"  />
-
 <input type="submit" value="go !" />
-
 </form>
+<b> max size for graphs is 1024x768 </b>
 </div>
 
 

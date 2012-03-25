@@ -2,9 +2,12 @@
 fix labels on the yearly X scale
 add caching
 2
-be able to choose graph size
+(done)be able to choose graph size
+adding a volume graph under the price graph
+
 3
 add weekly data
+add orderbook data
 4
 custom graph : choose from date to date
 
