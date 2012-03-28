@@ -6,9 +6,13 @@ include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
 
-if ( isset( $_POST ) && isset( $_POST["month"] ) ) 
+//echo $_GET["month"] ; exit;
+//printf($_POST["month"] );exit;
+if ( isset( $_POST ) && isset( $_POST["month"] ) && checkdate(substr($_POST["month"],5,2),1,substr($_POST["month"],0,4) ) ) 
 { $date = $_POST["month"]; }
-else $date="2011-06";
+else if (  isset( $_GET )  && isset( $_GET["month"] ) && checkdate(substr($_GET["month"],5,2),1,substr($_GET["month"],0,4) ) )
+{ $date = $_GET["month"]; }
+else {echo "wrong date : ".$date; exit;}
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 ) { $xsize = $_POST["xsize"]; }
 else $xsize=800;
 if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) && $_POST["ysize"] <=768 ) { $ysize = $_POST["ysize"]; }
@@ -16,7 +20,7 @@ else $ysize=600;
 
 $minscale=null; $maxscale=null;
 $type="monthly"; $interval="1-day";
-
+//echo $date;exit;
 /* Create and populate the pData object */
 $MyData = new pData(); 
 load_nmc_data($MyData, $date, $type, $minscale, $maxscale, $interval);

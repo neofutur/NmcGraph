@@ -6,15 +6,15 @@ include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
 
-if ( isset( $_POST ) && isset( $_POST["year"] ) )
+if ( isset( $_POST ) && isset( $_POST["year"] ) && checkdate(1,1,substr($_POST["year"],0,4) ) )
 { $date = $_POST["year"]; }
-else $date="2012";
-
+else if (  isset( $_GET )  && isset( $_GET["year"] ) && checkdate(1,1,substr($_GET["year"],0,4) ) )
+{ $date = $_GET["year"]; }
+else {echo "wrong date : ".$date; exit;}
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 ) { $xsize = $_POST["xsize"]; }
 else $xsize=800;
 if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) && $_POST["ysize"] <=768 ) { $ysize = $_POST["ysize"]; }
 else $ysize=600;
-
 
 $minscale=null; $maxscale=null;
 $type="yearly"; $interval="1-day";

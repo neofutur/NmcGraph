@@ -7,12 +7,19 @@ include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
 
 //var_dump($_POST);exit;
-if ( isset( $_POST ) && isset( $_POST["day"] )  )
+if ( isset( $_POST ) && isset( $_POST["day"]) && checkdate(substr($_POST["day"],5,2),substr($_POST["day"],8.2),substr($_POST["day"],0,4) )  )
 { $date=$_POST["day"]; }
-else $date="2011-06-10";
-if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 ) { $xsize = $_POST["xsize"]; }
+else if ( isset( $_GET ) && isset( $_GET["day"] )&& checkdate(substr($_GET["day"],5,2),substr($_GET["day"],8.2),substr($_GET["day"],0,4) ) )
+{ $date=$_GET["day"]; }
+else {echo "wrong date : ".$date; exit;}
+if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 )
+{ $xsize = $_POST["xsize"];   }
+else if ( isset( $_GET ) && isset( $_GET["xsize"]) && is_numeric($_GET["xsize"] && $_GET["xsize"] <=1024 ) )
+{ $xsize = $_GET["xsize"];  }
 else $xsize=800;
 if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) && $_POST["ysize"] <=768 ) { $ysize = $_POST["ysize"]; }
+else if ( isset( $_GET ) && isset( $_GET["ysize"] ) && is_numeric($_GET["ysize"] && $_GET["ysize"] <=768 ) )
+{ $ysize = $_GET["ysize"]; }
 else $ysize=600;
 
 $minscale=null; $maxscale=null;
