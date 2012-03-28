@@ -18,7 +18,7 @@ if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) 
 else $ysize=600;
 
 $minscale=null; $maxscale=null;
-$type="yearly"; $interval="1-day";
+$type="yearly"; $interval="1-month";
 
 /* Create and populate the pData object */
 $MyData = new pData(); 

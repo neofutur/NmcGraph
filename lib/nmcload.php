@@ -96,9 +96,11 @@ function loadfile(&$MyData, &$csvfile, $date, &$minscale, &$maxscale, $interval)
   $tradedate = $rawline[4];
   $tradehour = substr($tradedate, 11,2);
   $tradeday = substr($tradedate, 8,2);
+  $trademonth = substr($tradedate, 5,2);
  
   if ( $interval == "1-hour" ) $currentperiod = $tradehour;
   if ( $interval == "1-day"  ) $currentperiod = $tradeday; 
+  if ( $interval == "1-month"  ) $currentperiod = $trademonth; 
   if ( $min == 0  ) $min = $tradevalue; 
  //$currentperiod =
  
