@@ -54,9 +54,14 @@ $myPicture->drawText(70,45,"NMC price in BTC at date $date",array("FontSize"=>20
 $myPicture->setGraphArea(70,60,$xsize -40,$ysize -30);
 $myPicture->drawFilledRectangle(70,60,$xsize -40,$ysize -30,array("R"=>255,"G"=>255,"B"=>255,"Surrounding"=>-200,"Alpha"=>10));
 
+//$MyData->addPoints(array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"),"Labels");
+//$MyData->setSerieDescription("Labels","Months");
+//$MyData->setAbscissa("Labels");
+
 $AxisBoundaries = array(0=>array("Min"=>$minscale,"Max"=>$maxscale));
 $myPicture->drawScale(array("DrawSubTicks"=>TRUE,"CycleBackground"=>TRUE,"Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries ));
- 
+//$myPicture->drawScale(array("DrawSubTicks"=>FALSE,"CycleBackground"=>TRUE ));
+//$myPicture->drawScale(array("DrawYLines"=>array(0))); 
 /* Draw the 1st stock chart */
 $mystockChart = new pStock($myPicture,$MyData);
 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>30));

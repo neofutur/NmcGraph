@@ -35,7 +35,7 @@ load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
 
 $MyData->setAxisDisplay(0,AXIS_FORMAT_CURRENCY, "฿"  );
 //$MyData->addPoints(array("8h","10h","12h","14h","16h","18h"),"Time");
-$MyData->setAbscissa("Time");
+//$MyData->setAbscissa("Months");
 //$MyData->setAxisName(0,"Price in BTC"); 
 //$MyData->setSerieDescription("Time","Hour of the day");
 
@@ -61,8 +61,16 @@ $myPicture->drawText(70,45,"NMC price in BTC at date $date",array("FontSize"=>20
 $myPicture->setGraphArea(70,60,$xsize-40,$ysize-30);
 $myPicture->drawFilledRectangle(70,60,$xsize-40,$ysize-30,array("R"=>255,"G"=>255,"B"=>255,"Surrounding"=>-200,"Alpha"=>10));
 
-$AxisBoundaries = array(0=>array("Min"=>$minscale,"Max"=>$maxscale));
-$myPicture->drawScale(array("DrawSubTicks"=>TRUE,"CycleBackground"=>TRUE,"Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries ));
+// Y scale
+$AxisBoundariesY = array(0=>array("Min"=>$minscale,"Max"=>$maxscale));
+$myPicture->drawScale(array("DrawSubTicks"=>TRUE,"CycleBackground"=>TRUE,"Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundariesY ));
+
+//X scale
+//$AxisBoundariesX = array("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23");
+//$MyData->setSerieDescription("Labels","Months");
+//$MyData->setAbscissa("Labels");
+$MyData->setXAxisDisplay(0,AXIS_FORMAT_TIME,"H");
+//$myPicture->drawScale(array("DrawXLines"=>array(0)));
  
 /* Draw the 1st stock chart */
 $mystockChart = new pStock($myPicture,$MyData);

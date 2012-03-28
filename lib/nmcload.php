@@ -14,7 +14,7 @@ function load_nmc_data($MyData, $date = "2011-06-09", $type="daily", &$minscale,
 //exit;
 //printf ("avant load");
 $filename = "../data/$type/namecoin_$date.csv";
-//printf("filename : $filename <br />\n");
+//printf("filename : $filename <br />\n"); exit;
 if ( file_exists($filename ) )
 { $csvfile=fopen ($filename,"r") or die("can't open file"); }
 else {echo "wrong date : ".$date; exit;}
@@ -50,14 +50,29 @@ function loadfile(&$MyData, &$csvfile, $date, &$minscale, &$maxscale, $interval)
  $maxline = 100;
  $openlist = array(); $closelist= array(); $minlist= array(); $maxlist= array();
  $rawline="";$tradeday="";$tradehour="";$open=0; $close=0;$min=0;$max=0;
- $currentperiod="";$firsthour="";$firstday="";
+ $currentperiod="";$maxperiod="";$firsthour="";$firstday="";
 
  $firsthour="01";
  $firstday="01";
+ $firsmonth="01";
 
- if ( $interval == "1-hour" ) $firstperiod= $currentperiod = $firsthour;
- if ( $interval == "1-day"  ) $firstperiod= $currentperiod = $firstday;
-
+ if ($interval == "1-day" )
+ {
+  $firstperiod= $currentperiod = $firstday;
+  $month=substr($date,5,2);
+  $year =substr($date,0,4);
+  $maxperiod= cal_days_in_month (CAL_GREGORIAN, $month, $year  );
+ }
+ if ( $interval == "1-hour" )
+ {
+  $firstperiod= $currentperiod = $firsthour;
+  $maxperiod="24";
+ }
+ if($interval == "1-month" )
+ {
+  $firstperiod= $currentperiod = $firsmonth;
+  $maxperiod= "12";
+ }
 
  $newday=1;
 
@@ -90,14 +105,17 @@ function loadfile(&$MyData, &$csvfile, $date, &$minscale, &$maxscale, $interval)
   //printf(" currentperiod : $currentperiod tradedate : $tradedate tradevalue : $tradevalue tradehour : $tradehour tradeday : $tradeday lastperiod : $lastperiod currentperiod : $currentperiod <br />\n");
   //special case, first interval is empty
   $emptyintervals = $currentperiod - $lastperiod ;
-  //printf(" empty hours : $emptyhours <br />\n");
   if ( $emptyintervals > 1 )
   {
+   
+   //printf("current : $currentperiod last : $lastperiod  empty intervals : $emptyintervals <br />\n");// exit;
    //printf(" emty intervals : $emptyintervals<br />\n");
-   $i=0;
+   $i=1;
    //filling data with empty intervals
    while( $i < $emptyintervals )
-   { $openlist[]=null; $closelist[]=null;$minlist[]=null;$maxlist[]=null;$i++;}
+   {
+   //printf("push empty<br />\n");
+   $openlist[]=null; $closelist[]=null;$minlist[]=null;$maxlist[]=null;$i++;}
   }
 //  else
 //  {
@@ -111,6 +129,7 @@ function loadfile(&$MyData, &$csvfile, $date, &$minscale, &$maxscale, $interval)
    { 
     //printf("WRITING $lastperiod : open : $open close : $close min : $min max: $max <br />\n");
     //interval ended, storing data
+    //printf("push array<br />\n");
     $openlist[]=round($open,4);
     $closelist[]=round($close,4);
     $minlist[]=round($min,4);
@@ -132,6 +151,17 @@ function loadfile(&$MyData, &$csvfile, $date, &$minscale, &$maxscale, $interval)
  $minlist[]=round($min,4);
  $maxlist[]=round($max,4);
 
+ //what if there are still empty intervals to reach max interval ? 
+ if ( $currentperiod < $maxperiod )
+ {
+  $emptyintervals = $maxperiod - $currentperiod ;
+  $i=1;
+  //filling data with empty intervals
+  while( $i < $emptyintervals )
+  { //printf("push empty<br />\n");
+  $openlist[]=null; $closelist[]=null;$minlist[]=null;$maxlist[]=null;$i++;
+  }
+ }
 //no more lines in file
  $MyData->addPoints($openlist,"Open");
  $MyData->addPoints($closelist,"Close");
@@ -145,6 +175,7 @@ function loadfile(&$MyData, &$csvfile, $date, &$minscale, &$maxscale, $interval)
  $minscale = round($minscale, 4, PHP_ROUND_HALF_DOWN );
  $maxscale = round($maxscale, 4, PHP_ROUND_HALF_UP );
 
+//exit;
 }
 
 ?>
