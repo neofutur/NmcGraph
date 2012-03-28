@@ -7,11 +7,12 @@ include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
 
 //var_dump($_POST);exit;
-if ( isset( $_POST ) && isset( $_POST["day"]) && checkdate(substr($_POST["day"],5,2),substr($_POST["day"],8.2),substr($_POST["day"],0,4) )  )
+if ( isset( $_POST ) && isset( $_POST["day"]) )
 { $date=$_POST["day"]; }
-else if ( isset( $_GET ) && isset( $_GET["day"] )&& checkdate(substr($_GET["day"],5,2),substr($_GET["day"],8.2),substr($_GET["day"],0,4) ) )
+else if ( isset( $_GET ) && isset( $_GET["day"] ) )
 { $date=$_GET["day"]; }
-else {echo "wrong date : ".$date; exit;}
+if ( !checkdate(substr($date,5,2),substr($date,8.2),substr($date,0,4))) { echo "wrong date : ".$date; exit;}
+
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 )
 { $xsize = $_POST["xsize"];   }
 else if ( isset( $_GET ) && isset( $_GET["xsize"]) && is_numeric($_GET["xsize"] && $_GET["xsize"] <=1024 ) )
