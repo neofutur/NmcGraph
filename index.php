@@ -25,6 +25,9 @@
  $(function() {
   $( "#year" ).datepicker({ minDate: new Date(2011, 5, 1), maxDate: "-1D", dateFormat: 'yy', showOtherMonths: true, selectOtherMonths: true,  navigationAsDateFormat: true , autoSize: true, changeYear: true });
   });
+ $(function() {
+  $( "#year2" ).datepicker({ minDate: new Date(2011, 5, 1), maxDate: "-1D", dateFormat: 'yy', showOtherMonths: true, selectOtherMonths: true,  navigationAsDateFormat: true , autoSize: true, changeYear: true });
+  });
  $(document).ready(function() {
   $( '.xsize').keydown(function(event) {
         // Allow: backspace, delete, tab and escape
@@ -98,10 +101,10 @@
 <b> max size for graphs is 1024x768 </b>
 </div>
 
-<h2>yearly data</h2>
+<h2>yearly data, per month</h2>
 <div class="demo">
 <form action="./yearly/nmc_yearly.php" method="post">
-<label for="day">choose year</label>
+<label for="year">choose year</label>
 <input type="text" id="year" name="year" class="datepicker" />
 <br />Optionnaly choose the <label for="xsize3">width</label>
 <input type="text" class="xsize" id="xsize3" name="xsize" value="800" />
@@ -112,6 +115,19 @@
 <b> max size for graphs is 1024x768 </b>
 </div>
 
+<h2>yearly data, per month</h2>
+<div class="demo">
+<form action="./yearly/nmc_yearlyw.php" method="post">
+<label for="year2">choose year</label>
+<input type="text" id="year2" name="year2" class="datepicker" />
+<br />Optionnaly choose the <label for="xsize4">width</label>
+<input type="text" class="xsize" id="xsize4" name="xsize" value="800" />
+<br />and <label for="ysize4">Height</label> for your graph
+<input type="text" class="ysize" id="ysize4" name="ysize" value="600"  />
+<input type="submit" value="go !" />
+</form>
+<b> max size for graphs is 1024x768 </b>
+</div>
 
 </body>
 </html>
