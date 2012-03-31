@@ -6,6 +6,7 @@ include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcloadtest.php");
 
+$date="";
 //var_dump($_POST);exit;
 if ( isset( $_POST ) && isset( $_POST["year2"] ) )
 { $date = $_POST["year2"]; }

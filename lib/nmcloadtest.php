@@ -185,7 +185,11 @@ function loadfile(&$MyData, &$csvfile, $date, &$minscale, &$maxscale, $interval)
  }
  //what if there are still empty intervals to reach max interval ? 
  //printf("current : $currentperiod max : $maxperiod ");exit;
- if ( $currentperiod < $maxperiod  && $currentperiod > 0 )
+ // $maxperiod= date("W", mktime(0,0,0,12,28,$year));
+ $todayperiod=  date("W",  time());
+ //printf("today : $todayperiod  current : $currentperiod");exit;
+ //no space for printing unexisting futur
+ if ( $currentperiod < $maxperiod  && $currentperiod > 0 && $currentperiod < $todayperiod )
  {
   //echo "more intervals"; exit;
   $emptyintervals = $maxperiod - $currentperiod ;
