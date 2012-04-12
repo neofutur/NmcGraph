@@ -31,47 +31,70 @@ $minscale=0;$maxscale=0;$valuerange=10;$totX=1000;
 
 
  /* Create and populate the pData object */
- $MyData = new pData();  
+$MyDatabid = new pData();  
+$MyDataask = null;
+//$MyDataask = new pData();  
 
-load_nmc_depth($MyData,5,$minscale,$maxscale,$valuerange,$totX);
+load_nmc_depth($MyDatabid,$MyDataask,4,$minscale,$maxscale,$valuerange,$totX);
+//echo "\n<br /><pre>"; var_dump($MyDatabid);echo "</pre>\n";
+//echo "\n<br /><pre>"; var_dump($MyDataask);echo "</pre>\n";
+ $MyDatabid->setAxisName(0,"Values ( K NMC)");
+ //$MyDataask->setAxisName(0,"Values ( K NMC)");
+// $MyDatabid->addPoints(array("January","February","March","April","May","Juin","July","August","September"),"Months");
+ //$MyDatabid->setSerieDescription("Values","Values");
+ //$MyDataask->setSerieDescription("Values","Values");
 
- $MyData->setAxisName(0,"Values ( K NMC)");
-// $MyData->addPoints(array("January","February","March","April","May","Juin","July","August","September"),"Months");
- $MyData->setSerieDescription("Values","Values");
- $MyData->setAbscissa("Values");
+ $MyDatabid->setAbscissa("Values");
+ //$MyDataask->setAbscissa("Values");
 
  /* Create the pChart object */
- $myPicture = new pImage($xsize,$ysize,$MyData);
-
- /* Turn of Antialiasing */
- $myPicture->Antialias = FALSE;
-
- /* Add a border to the picture */
- $myPicture->drawGradientArea(0,0,$xsize,$ysize,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100));
- $myPicture->drawGradientArea(0,0,$xsize,$ysize,DIRECTION_HORIZONTAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>20));
- $myPicture->drawRectangle(0,0,$xsize-1,$ysize-1,array("R"=>0,"G"=>0,"B"=>0));
-
- /* Set the default font */
- $myPicture->setFontProperties(array("FontName"=>"../fonts/pf_arma_five.ttf","FontSize"=>10));
+ $myPicturebid = new pImage($xsize*2,$ysize,$MyDatabid);
+// $myPictureask = new pImage($xsize,$ysize,$MyDataask);
 
  /* Define the chart area */
- $myPicture->setGraphArea(60,40,$xsize-50,$ysize-30);
+ $myPicturebid->setGraphArea(60,40,$xsize-50,$ysize-30);
+
+/* Turn of Antialiasing */
+ $myPicturebid->Antialias = FALSE;
+
+ /* Add a border to the picture */
+ $myPicturebid->drawGradientArea(0,0,$xsize,$ysize,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100));
+ $myPicturebid->drawRectangle(0,0,$xsize-1,$ysize-1,array("R"=>0,"G"=>0,"B"=>0));
+ 
+ /* Set the default font */
+ $myPicturebid->setFontProperties(array("FontName"=>"../fonts/pf_arma_five.ttf","FontSize"=>10));
+
 
  /* Draw the scale */
  $scaleSettings = array("GridR"=>200,"GridG"=>200,"GridB"=>200,"DrawSubTicks"=>TRUE,"CycleBackground"=>TRUE);
- $myPicture->drawScale($scaleSettings);
+ $myPicturebid->drawScale($scaleSettings);
 
  /* Write the chart legend */
- $myPicture->drawLegend(580,12,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
+ $myPicturebid->drawLegend(580,12,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
 
  /* Turn on shadow computing */ 
- $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
+ $myPicturebid->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
 
- /* Draw the chart */
- $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
  $settings = array("Surrounding"=>-30,"InnerSurrounding"=>30);
- $myPicture->drawBarChart($settings);
+ $myPicturebid->drawBarChart($settings);
+
+ //$myPicturebid->setGraphArea(60+$xsize,40,$xsize-50,$ysize-30);
+ //$myPicturebid->Antialias = FALSE;
+ //$myPicturebid->drawGradientArea($xsize,0,$xsize,$ysize,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100));
+ //$myPicturebid->drawRectangle($xsize,0,$xsize-1,$ysize-1,array("R"=>0,"G"=>0,"B"=>0));
+ //$myPicturebid->setFontProperties(array("FontName"=>"../fonts/pf_arma_five.ttf","FontSize"=>10));
 
  /* Render the picture (choose the best way) */
- $myPicture->autoOutput("pictures/example.drawBarChart.simple.png");
+ //$scaleSettings = array("GridR"=>200,"GridG"=>200,"GridB"=>200,"DrawSubTicks"=>TRUE,"CycleBackground"=>TRUE);
+ //$myPicturebid->drawScale($scaleSettings);
+
+ /* Write the chart legend */
+ //$myPicturebid->drawLegend(580,12,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
+
+ /* Turn on shadow computing */ 
+ //$myPicturebid->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
+ //$settings = array("Surrounding"=>-30,"InnerSurrounding"=>30);
+ //$myPicturebid->drawBarChart($settings);
+
+ $myPicturebid->autoOutput("pictures/example.drawBarChart.simple.png");
 ?>
