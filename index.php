@@ -136,6 +136,8 @@
 
 
 <h2>yearly data, per month</h2>
+<table><tr>
+<td>
 <div class="demo">
 <form action="./yearly/nmc_yearly.php" method="post">
 <label for="year">choose year</label>
@@ -148,6 +150,19 @@
 </form>
 <b> max size for graphs is 1024x768 </b>
 </div>
+</td>
+<td>
+ <?php $thisyear= date("Y"); $lastyear=date("Y",time() - 60 * 60 * 24 * 365) ; $theyearbefore = date("Y",time() - 60 * 60 * 24 * 730); ?>
+<h3>or</h3> <form action="./yearly/nmc_yearly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $thisyear;?>" name="year" /> <input type="submit" value="this year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $lastyear;?>" name="year" /> <input type="submit" value="last year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $theyearbefore;?>" name="year" /> <input type="submit" value="the year before" /> </form>
+</td>
+</tr>
+</table>
 
 <h2>yearly data, per week</h2>
 <table><tr>
