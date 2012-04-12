@@ -71,10 +71,12 @@
 </head>
 <body>
 <h1> welcome on namecoin.gw.gd, still alpha version, but already providing historical data for namecoin</h1>
-
-<table>
+<br />
 <h2>daily data</h2>
-<tr><td>
+<br />
+<table>
+<tr>
+<td>
 <div class="demo">
 <form action="./daily/nmc_daily.php" method="post">
 <label for="day">choose day</label>
@@ -147,7 +149,9 @@
 <b> max size for graphs is 1024x768 </b>
 </div>
 
-<h2>yearly data, per month</h2>
+<h2>yearly data, per week</h2>
+<table><tr>
+<td>
 <div class="demo">
 <form action="./yearly/nmc_yearlyw.php" method="post">
 <label for="year2">choose year</label>
@@ -160,6 +164,19 @@
 </form>
 <b> max size for graphs is 1024x768 </b>
 </div>
+</td>
+<td>
+ <?php $thisyear= date("Y"); $lastyear=date("Y",time() - 60 * 60 * 24 * 365) ; $theyearbefore = date("Y",time() - 60 * 60 * 24 * 730); ?>
+<h3>or</h3> <form action="./yearly/nmc_yearlyw.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $thisyear;?>" name="year2" /> <input type="submit" value="this year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearlyw.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $lastyear;?>" name="year2" /> <input type="submit" value="last year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearlyw.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $theyearbefore;?>" name="year2" /> <input type="submit" value="the year before" /> </form>
+</td>
+</tr>
+</table>
 
 </body>
 </html>
