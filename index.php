@@ -72,8 +72,9 @@
 <body>
 <h1> welcome on namecoin.gw.gd, still alpha version, but already providing historical data for namecoin</h1>
 
-
+<table>
 <h2>daily data</h2>
+<tr><td>
 <div class="demo">
 <form action="./daily/nmc_daily.php" method="post">
 <label for="day">choose day</label>
@@ -86,8 +87,24 @@
 </form>
 <b> max size for graphs is 1024x768 </b>
 </div>
+</td>
+<td>
+ <?php $today= date("Y-m-d"); $yesterday=date("Y-m-d",time() - 60 * 60 * 24) ; $thedaybefore = date("Y-m-d",time() - 60 * 60 * 48); ?>
+<h3>or</h3> <form action="./daily/nmc_daily.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $today ;?>" name="day" /> <input type="submit" value="today" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./daily/nmc_daily.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $yesterday ;?>" name="day" /> <input type="submit" value="yesterday" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./daily/nmc_daily.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $yesterday ;?>" name="day" /> <input type="submit" value="the day before" /> </form>
+</td>
+
+</tr>
+</table>
 
 <h2>monthly data</h2>
+<table>
+<tr><td>
 <div class="demo">
 <form action="./monthly/nmc_monthly.php" method="post">
 <label for="month">Choose month</label>
@@ -100,6 +117,21 @@
 </form>
 <b> max size for graphs is 1024x768 </b>
 </div>
+</td>
+<td>
+ <?php $thismonth= date("Y-m"); $lastmonth=date("Y-m",time() - 60 * 60 * 24 * 30) ; $themonthbefore = date("Y-m",time() - 60 * 60 * 24 * 60); ?>
+<h3>or</h3> <form action="./monthly/nmc_monthly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $thismonth;?>" name="month" /> <input type="submit" value="this month" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./monthly/nmc_monthly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $lastmonth;?>" name="month" /> <input type="submit" value="last month" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./monthly/nmc_monthly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $themonthbefore;?>" name="month" /> <input type="submit" value="the month before" /> </form>
+</td>
+
+</tr>
+</table>
+
 
 <h2>yearly data, per month</h2>
 <div class="demo">
