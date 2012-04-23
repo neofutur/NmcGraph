@@ -33,7 +33,7 @@ $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/daily/nmc_daily.php?day=".$date;
 $title=$type." namecoin historic data graph for date $date";
 
-$current_time = time(); $expire_time = 3600*24*365; $file_time = @filemtime($imagefilename);
+$current_time = time(); $expire_time = 3600; $file_time = @filemtime($imagefilename);
 if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
  //echo 'returning from cached file';
  //return file_get_contents($file);
