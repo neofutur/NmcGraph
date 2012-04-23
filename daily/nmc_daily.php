@@ -5,6 +5,8 @@ include("../../class/pDraw.class.php");
 include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
+include("../lib/renderpage.php");
+include("../cfg/nmcgraph_cfg.php");
 
 //var_dump($_POST);exit;
 if ( isset( $_POST ) && isset( $_POST["day"]) )
@@ -25,7 +27,11 @@ else $ysize=600;
 
 $minscale=null; $maxscale=null;
 $type="daily"; $interval="1-hour";
-
+$imagefilename="../cache/daily/daily_$date.png";
+$imagepath="/cache/daily/daily_$date.png";
+$altimage="namecoin graph for date $date";
+$permalink=$siteurl."/daily/nmc_daily.php?day=".$date;
+$title="namecoin historic data graph for date $date";
 /* Create and populate the pData object */
 $MyData = new pData(); 
 load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
@@ -92,6 +98,14 @@ $mystockChart->drawStockChart();
 //$mystockChart->drawStockChart();
  
 /* Render the picture (choose the best way) */
-$myPicture->autoOutput("pictures/example.drawStockChart.png");
+//$myPicture->autoOutput("pictures/example.drawStockChart.png");
+$myPicture->render($imagefilename);
 
+renderpage($title, $permalink, $altimage, $imagepath );
+
+/*echo "<html><head></head><body>";
+echo "<a href=\"".$permalink."\"> permalink </a><br /><br />";
+echo"<img alt=\"".$altimage."\" src=".$imagepath."/>";
+echo "</body></html>";
+*/
 ?>
