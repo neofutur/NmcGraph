@@ -30,12 +30,14 @@ $imagepath="/cache/monthly/monthly_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/monthly/nmc_monthly.php?month=".$date;
 $title=$type." namecoin historic data graph for date $date";
+$graphgendate = "";
+$message="monthly graph is cached one day";
 
 //echo $date;exit;
-$current_time = time(); $expire_time = 3600*24*365; $file_time = @filemtime($imagefilename);
+$current_time = time(); $expire_time = 3600*24; $file_time = @filemtime($imagefilename);
 if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
  //echo 'returning from cached file';
- //return file_get_contents($file);
+ $graphgendate = $file_time;
 }
 else
 {
@@ -95,7 +97,8 @@ $mystockChart->drawStockChart();
 /* Render the picture (choose the best way) */
 //$myPicture->autoOutput("pictures/example.drawStockChart.png");
 $myPicture->render($imagefilename);
+$graphgendate = $current_time;
 }
-renderpage($title, $permalink, $altimage, $imagepath );
+renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message );
 
 ?>

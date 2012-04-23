@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
 <title>Namecoin historical data from exchange.bitparking.com</title>
+<link rel="stylesheet" type="text/css" media="screen" href="screen.css" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="neoNMCdata v 0.1 [13]" />
 <link rel="alternate" type="application/rss+xml" title="Syndicate the whole site" href="http://bitcoin.gw.gd/spip.php?page=backend" />
@@ -70,7 +72,7 @@
 
 </head>
 <body>
-<h1> welcome on namecoin.gw.gd, still alpha version, but already providing historical data for namecoin</h1>
+<?php include("header.php"); ?>
 <br />
 <h2>daily data</h2>
 <br />
@@ -193,6 +195,7 @@
 </tr>
 </table>
 
+<?php include("footer.php"); ?>
 </body>
 </html>
 

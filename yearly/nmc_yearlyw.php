@@ -28,11 +28,13 @@ $imagepath="/cache/yearlyw/yearly_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/yearly/nmc_yearlyw.php?year=".$date;
 $title=$type." namecoin historic data graph for date $date";
+$graphgendate = "";
+$message="yearly graph by week is cached one week";
 
-$current_time = time(); $expire_time = 3600*24*365; $file_time = @filemtime($imagefilename);
+$current_time = time(); $expire_time = 3600*24*7; $file_time = @filemtime($imagefilename);
 if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
  //echo 'returning from cached file';
- //return file_get_contents($file);
+ $graphgendate = $file_time;
 }
 else
 {
@@ -101,7 +103,8 @@ $mystockChart->drawStockChart();
 /* Render the picture (choose the best way) */
 //$myPicture->autoOutput("pictures/example.drawStockChart.png");
 $myPicture->render($imagefilename);
+$graphgendate = $current_time;
 }
-renderpage($title, $permalink, $altimage, $imagepath );
+renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message );
 
 ?>
