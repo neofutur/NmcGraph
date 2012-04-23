@@ -29,9 +29,9 @@ $minscale=null; $maxscale=null;
 $type="daily"; $interval="1-hour";
 $imagefilename="../cache/daily/daily_$date.png";
 $imagepath="/cache/daily/daily_$date.png";
-$altimage="namecoin graph for date $date";
+$altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/daily/nmc_daily.php?day=".$date;
-$title="namecoin historic data graph for date $date";
+$title=$type." namecoin historic data graph for date $date";
 /* Create and populate the pData object */
 $MyData = new pData(); 
 load_nmc_data($MyData, $date, $type, $minscale, $maxscale);

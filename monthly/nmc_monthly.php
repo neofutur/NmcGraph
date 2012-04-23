@@ -5,6 +5,8 @@ include("../../class/pDraw.class.php");
 include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
+include("../lib/renderpage.php");
+include("../cfg/nmcgraph_cfg.php");
 
 //echo $_GET["month"] ; exit;
 //printf($_POST["month"] );exit;
@@ -23,6 +25,12 @@ else $ysize=600;
 
 $minscale=null; $maxscale=null;
 $type="monthly"; $interval="1-day";
+$imagefilename="../cache/monthly/monthly_$date.png";
+$imagepath="/cache/monthly/monthly_$date.png";
+$altimage=$type." namecoin graph for date $date";
+$permalink=$siteurl."/monthly/nmc_monthly.php?month=".$date;
+$title=$type." namecoin historic data graph for date $date";
+
 //echo $date;exit;
 /* Create and populate the pData object */
 $MyData = new pData(); 
@@ -77,6 +85,8 @@ $mystockChart->drawStockChart();
 //$mystockChart->drawStockChart();
  
 /* Render the picture (choose the best way) */
-$myPicture->autoOutput("pictures/example.drawStockChart.png");
+//$myPicture->autoOutput("pictures/example.drawStockChart.png");
+$myPicture->render($imagefilename);
+renderpage($title, $permalink, $altimage, $imagepath );
 
 ?>

@@ -5,6 +5,8 @@ include("../../class/pDraw.class.php");
 include("../../class/pImage.class.php");
 include("../../class/pStock.class.php");
 include("../lib/nmcload.php");
+include("../lib/renderpage.php");
+include("../cfg/nmcgraph_cfg.php");
 
 $date="";
 if ( isset( $_POST ) && isset( $_POST["year"] ) )
@@ -20,6 +22,11 @@ else $ysize=600;
 
 $minscale=null; $maxscale=null;
 $type="yearly"; $interval="1-month";
+$imagefilename="../cache/yearly/yearly_$date.png";
+$imagepath="/cache/yearly/yearly_$date.png";
+$altimage=$type." namecoin graph for date $date";
+$permalink=$siteurl."/yearly/nmc_yearly.php?year=".$date;
+$title=$type." namecoin historic data graph for date $date";
 
 /* Create and populate the pData object */
 $MyData = new pData(); 
@@ -83,6 +90,9 @@ $mystockChart->drawStockChart();
 //$mystockChart->drawStockChart();
  
 /* Render the picture (choose the best way) */
-$myPicture->autoOutput("pictures/example.drawStockChart.png");
+//$myPicture->autoOutput("pictures/example.drawStockChart.png");
+$myPicture->render($imagefilename);
+renderpage($title, $permalink, $altimage, $imagepath );
+
 
 ?>
