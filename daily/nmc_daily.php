@@ -32,6 +32,14 @@ $imagepath="/cache/daily/daily_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/daily/nmc_daily.php?day=".$date;
 $title=$type." namecoin historic data graph for date $date";
+
+$current_time = time(); $expire_time = 3600*24*365; $file_time = @filemtime($imagefilename);
+if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
+ //echo 'returning from cached file';
+ //return file_get_contents($file);
+}
+else
+{
 /* Create and populate the pData object */
 $MyData = new pData(); 
 load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
@@ -100,7 +108,7 @@ $mystockChart->drawStockChart();
 /* Render the picture (choose the best way) */
 //$myPicture->autoOutput("pictures/example.drawStockChart.png");
 $myPicture->render($imagefilename);
-
+}
 renderpage($title, $permalink, $altimage, $imagepath );
 
 /*echo "<html><head></head><body>";
