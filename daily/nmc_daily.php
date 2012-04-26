@@ -31,9 +31,11 @@ $imagefilename="../cache/daily/daily_$date.png";
 $imagepath="/cache/daily/daily_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/daily/nmc_daily.php?day=".$date;
-$title=$type." namecoin historic data graph for date $date";
+$title=$type."daily namecoin historic data graph for date $date";
 $graphgendate = "";
+
 $message="daily graph is cached one hour";
+
 $current_time = time(); $expire_time = 3600; $file_time = @filemtime($imagefilename);
 if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
  //echo 'returning from cached file';
@@ -47,6 +49,8 @@ load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
 //var_dump($MyData);
 
 //printf("minscale: $minscale maxscale: $maxscale <br />\n");
+
+//buildgraph( $MyData, $xsize, $ysize, $title  );
 
 $MyData->setAxisDisplay(0,AXIS_FORMAT_CURRENCY, "฿"  );
 //$MyData->addPoints(array("8h","10h","12h","14h","16h","18h"),"Time");
@@ -70,7 +74,7 @@ $myPicture->drawRectangle(0,0,$xsize-1,$ysize-1,array("R"=>0,"G"=>0,"B"=>0));
  
 /* Write the title */
 $myPicture->setFontProperties(array("FontName"=>"../../fonts/verdana.ttf","FontSize"=>9));
-$myPicture->drawText(70,45,"NMC price in BTC at date $date",array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMLEFT));
+$myPicture->drawText(70,45,$title,array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMLEFT));
  
 /* Draw the 1st scale */
 $myPicture->setGraphArea(70,60,$xsize-40,$ysize-30);

@@ -27,7 +27,7 @@ $imagefilename="../cache/yearlyw/yearly_$date.png";
 $imagepath="/cache/yearlyw/yearly_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/yearly/nmc_yearlyw.php?year=".$date;
-$title=$type." namecoin historic data graph for date $date";
+$title=$type." yearly ( by week ) namecoin historic data graph for date $date";
 $graphgendate = "";
 $message="yearly graph by week is cached one week";
 
@@ -67,7 +67,7 @@ $myPicture->drawRectangle(0,0,$xsize -1,$ysize -1,array("R"=>0,"G"=>0,"B"=>0));
  
 /* Write the title */
 $myPicture->setFontProperties(array("FontName"=>"../../fonts/verdana.ttf","FontSize"=>9));
-$myPicture->drawText(70,45,"NMC price in BTC at date $date",array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMLEFT));
+$myPicture->drawText(70,45,$title,array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMLEFT));
  
 /* Draw the 1st scale */
 $myPicture->setGraphArea(70,60,$xsize -40,$ysize -30);
