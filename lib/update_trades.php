@@ -42,13 +42,15 @@ $second_trade_array=null;
  $firstdate_year = substr($first_date,0,4);
 
  $filename_daily    = "../data/daily/namecoin_$first_date.csv";        //namecoin_2011-10-05.csv
- $filename_monthly = "../data/monthly/namecoin_$firstdate_month.csv"; //namecoin_2011-12.csv
+ $filename_monthly  = "../data/monthly/namecoin_$firstdate_month.csv"; //namecoin_2011-12.csv
  $filename_yearly   = "../data/yearly/namecoin_$firstdate_year.csv";   //namecoin_2012.csv
+ $filename_alltime  = "../data/alltime/namecoin_alltime.csv";
 
  //printf("files : $filename_daily $filename_monthly $filename_yearly \n");
  update_csv_file($filename_daily,$first_trade_array);
  update_csv_file($filename_monthly,$first_trade_array);
  update_csv_file($filename_yearly,$first_trade_array);
+ update_csv_file($filename_alltime,$first_trade_array);
 
  //var_dump($second_trade_array);
 
@@ -58,14 +60,16 @@ $second_trade_array=null;
   $seconddate_month=substr($second_date,0,7);
   $seconddate_year=substr($second_date,0,4);
 
-  $filename_daily    = "../data/daily/namecoin_$second_date.csv";        //namecoin_2011-10-05.csv
-  $filename_monthly = "../data/monthly/namecoin_$seconddate_month.csv"; //namecoin_2011-12.csv
-  $filename_yearly   = "../data/yearly/namecoin_$seconddate_year.csv";   //namecoin_2012.csv
+  $filename_daily     = "../data/daily/namecoin_$second_date.csv";        //namecoin_2011-10-05.csv
+  $filename_monthly   = "../data/monthly/namecoin_$seconddate_month.csv"; //namecoin_2011-12.csv
+  $filename_yearly    = "../data/yearly/namecoin_$seconddate_year.csv";   //namecoin_2012.csv
+  $filename_alltime   = "../data/yearly/namecoin_$seconddate_year.csv";   //namecoin_2012.csv
 
  //printf("files : $filename_daily $filename_monthly $filename_yearly \n");
  update_csv_file($filename_daily,$first_trade_array);
  update_csv_file($filename_monthly,$first_trade_array);
  update_csv_file($filename_yearly,$first_trade_array);
+ update_csv_file($filename_alltime,$first_trade_array);
  }
 
 function split_by_date( $new_trade_array,&$first_trade_array, &$second_trade_array )

@@ -74,6 +74,7 @@
 <body>
 <?php include("header.php"); ?>
 <br />
+<h1> welcome on namecoin.gw.gd, still alpha version, but already providing historical data for namecoin</h1>
 <h2>daily data</h2>
 <br />
 <table>
@@ -194,6 +195,11 @@
 </td>
 </tr>
 </table>
+
+<h2>(beta) alltime graph, per month</h2>
+<div class="demo">
+<a href="http://namecoin.gw.gd/alltime/nmc_alltime.php">Alltime historical namecoin graph</a>
+</div>
 
 <?php include("footer.php"); ?>
 </body>

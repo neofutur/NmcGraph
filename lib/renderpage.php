@@ -11,7 +11,7 @@ echo "</head><body>\n";
 include("../header.php");
 
 echo "<a href=\"".$permalink."\"> permalink </a> - graph generated on : <b>$dategen</b> - ";
-if ( isset ( $message ) ) echo $message."<br /><br />";
+if ( isset ( $message ) ) echo $message."<br /><br /><br />";
 echo"<img alt=\"".$altimage."\" src=".$imagepath."/>";
 include( "../footer.php");
 echo "</body></html>";

@@ -26,7 +26,7 @@ $imagefilename="../cache/yearly/yearly_$date.png";
 $imagepath="/cache/yearly/yearly_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/yearly/nmc_yearly.php?year=".$date;
-$title=$type." yearly ( by month ) namecoin historic data graph for date $date";
+$title=$type." ( by month ) namecoin historic data graph for date $date";
 $graphgendate = "";
 $message="yearly graph is cached one month";
 

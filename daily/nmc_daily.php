@@ -31,7 +31,7 @@ $imagefilename="../cache/daily/daily_$date.png";
 $imagepath="/cache/daily/daily_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/daily/nmc_daily.php?day=".$date;
-$title=$type."daily namecoin historic data graph for date $date";
+$title=$type." namecoin historic data graph for date $date";
 $graphgendate = "";
 
 $message="daily graph is cached one hour";
