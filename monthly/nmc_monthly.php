@@ -17,7 +17,7 @@ else if (  isset( $_GET )  && isset( $_GET["month"] ) )
 else $date = "2011-06";
 
 if ( !checkdate(substr($date,5,2),1,substr($date,0,4))) { echo "wrong date : ".$date; exit;}
-
+//echo "hi";
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 ) { $xsize = $_POST["xsize"]; }
 else $xsize=800;
 if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) && $_POST["ysize"] <=768 ) { $ysize = $_POST["ysize"]; }

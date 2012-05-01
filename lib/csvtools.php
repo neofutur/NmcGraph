@@ -82,7 +82,7 @@ function last_tradeid_in_file ( $filename )
  $maxline=100;
  $last_trade_id=null;
 
- if ( isset($filename ) )
+ if ( isset($filename ) && file_exists($filename))
  {
   //printf("file : $filename\n");
   //open file
