@@ -73,10 +73,8 @@
 </head>
 <body>
 <?php include("header.php"); ?>
-<br />
 <h1> welcome on namecoin.gw.gd, still alpha version, but already providing historical data for namecoin</h1>
 <h2>daily data</h2>
-<br />
 <table>
 <tr>
 <td>
