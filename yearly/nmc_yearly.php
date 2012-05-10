@@ -28,9 +28,9 @@ $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/yearly/nmc_yearly.php?year=".$date;
 $title=$type." ( by month ) namecoin historic data graph for date $date";
 $graphgendate = "";
-$message="yearly graph is cached one month";
+$message="yearly graph is cached one week";
 
-$current_time = time(); $expire_time = 3600*24*30; $file_time = @filemtime($imagefilename);
+$current_time = time(); $expire_time = 3600*24*7; $file_time = @filemtime($imagefilename);
 if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
  //echo 'returning from cached file';
  $graphgendate = $file_time;
