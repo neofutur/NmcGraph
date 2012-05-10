@@ -104,51 +104,16 @@ include("lib/showgraph.php");
 ?>
         <div class="span10">
           <div class="hero-unit">
-            <h2>Daily graphs</h2>
+            <h3>Daily graphs</h3>
             <p>namecoin graph for today <?php echo $today; ?> </p>
 
 <?php
  $html_graph = showgraph( $today, 640, 480, "daily", "1-hour" );
 
-/*
-$date=$today;
-$xsize="640";$ysize="480";
-$minscale=null; $maxscale=null;
-$type="daily"; $interval="1-hour";
-$imagefilename="../cache/daily/daily_$date.png";
-$imagepath="/cache/daily/daily_$date.png";
-$altimage=$type." namecoin graph for date $date";
-$permalink=$siteurl."/daily/nmc_daily.php?day=".$date;
-$title=$type." namecoin historic data graph for date $date";
-$graphgendate = "";
-$cached=null;
-$message="daily graph is cached one hour";
-if ($graphgendate = checkcache( $imagefilename) )
-{
- $cached=true;
-}
-else
-{
- $cached=false;
-*/
-/* Create and populate the pData object */
-/*
-$MyData = new pData();
-load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
-//var_dump($MyData);
-
-//printf("minscale: $minscale maxscale: $maxscale <br />\n");
-
-$graphgendate = buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale, $date, $type, $imagefilename  );
-
-}
-*/
 echo $html_graph;
 
-//echo"<img alt=\"".$altimage."\" src=".$imagepath."/>";
-
 ?>
-            <p><a class="btn btn-primary btn-large">daily graph form &raquo;</a></p>
+            <br /><br /><p><a class="btn btn-primary btn-large">daily graph form &raquo;</a></p>
           </div>
           <div class="row-fluid">
             <div class="span6">
