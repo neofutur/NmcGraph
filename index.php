@@ -1,168 +1,205 @@
-<!DOCTYPE html>
-<?php
-include("lib/checkcache.php");
-include("cfg/nmcgraph_cfg.php");
-include("lib/buildgraph.php");
-?>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Namecoin historical data graphs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<title>Namecoin historical data from exchange.bitparking.com</title>
+<link rel="stylesheet" type="text/css" media="screen" href="screen.css" />
 
-    <!-- Le styles -->
-    <link href="./css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-    </style>
-    <link href="./css/bootstrap-responsive.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="neoNMCdata v 0.1 [13]" />
+<link rel="alternate" type="application/rss+xml" title="Syndicate the whole site" href="http://bitcoin.gw.gd/spip.php?page=backend" />
+<link rel="stylesheet" href="./themes/base/jquery.ui.all.css" />
+<script type="text/javascript" src="./jquery-1.7.1.js"></script>
+<script type="text/javascript" src="./jquery.validate.js"></script>
+<script type="text/javascript" src="./ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="./ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="./ui/jquery.ui.datepicker.js"></script>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<link rel="stylesheet" href="./css/ui-lightness/jquery-ui-1.8.18.custom.css" />
+<link rel="stylesheet" href="./demos.css" />
+<script type="text/javascript" >
+/* <![CDATA[ */
+ $(function() {
+  $( "#day" ).datepicker({ minDate: new Date(2011, 5, 1), maxDate: "-1D", dateFormat: 'yy-mm-dd', showOtherMonths: true, selectOtherMonths: true,  navigationAsDateFormat: true , autoSize: true, changeMonth: true, changeYear: true });
+  });
+ $(function() {
+  $( "#month" ).datepicker({ minDate: new Date(2011, 5, 1), maxDate: "+1D", dateFormat: 'yy-mm', showOtherMonths: true, selectOtherMonths: true,  navigationAsDateFormat: true , autoSize: true, changeMonth: true, changeYear: true });
+  });
+ $(function() {
+  $( "#year" ).datepicker({ minDate: new Date(2011, 5, 1), maxDate: "-1D", dateFormat: 'yy', showOtherMonths: true, selectOtherMonths: true,  navigationAsDateFormat: true , autoSize: true, changeYear: true });
+  });
+ $(function() {
+  $( "#year2" ).datepicker({ minDate: new Date(2011, 5, 1), maxDate: "-1D", dateFormat: 'yy', showOtherMonths: true, selectOtherMonths: true,  navigationAsDateFormat: true , autoSize: true, changeYear: true });
+  });
+ $(document).ready(function() {
+  $( '.xsize').keydown(function(event) {
+        // Allow: backspace, delete, tab and escape
+        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || 
+             // Allow: Ctrl+A
+            (event.keyCode == 65 && event.ctrlKey === true) || 
+             // Allow: home, end, left, right
+            (event.keyCode >= 35 && event.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        else {
+            // Ensure that it is a number and stop the keypress
+            if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                event.preventDefault(); 
+            }   
+        }
+    });
+  $( '.ysize').keydown(function(event) {
+        // Allow: backspace, delete, tab and escape
+        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || 
+             // Allow: Ctrl+A
+            (event.keyCode == 65 && event.ctrlKey === true) || 
+             // Allow: home, end, left, right
+            (event.keyCode >= 35 && event.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        else {
+            // Ensure that it is a number and stop the keypress
+            if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                event.preventDefault(); 
+            }   
+        }
+    });
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="./assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
-  </head>
+});
+/* ]]> */ 
+</script>
 
-  <body>
+</head>
+<body>
+<?php include("header.php"); ?>
+<h1> welcome on namecoin.gw.gd, still alpha version, but already providing historical data for namecoin</h1>
+<h2>daily data</h2>
+<table>
+<tr>
+<td>
+<div class="demo">
+<form action="./daily/nmc_daily.php" method="post">
+<label for="day">choose day</label>
+<input type="text" id="day" name="day" class="datepicker" />
+<br />Optionnaly choose the <label for="xsize1">width</label>
+<input type="text" class="xsize" id="xsize1" name="xsize" value="800" />
+<br />and <label for="ysize1">Height</label> for your graph
+<input type="text" class="ysize" id="ysize1" name="ysize" value="600" />
+<input type="submit" value="go !" />
+</form>
+<b> max size for graphs is 1024x768 </b>
+</div>
+</td>
+<td>
+ <?php $today= date("Y-m-d"); $yesterday=date("Y-m-d",time() - 60 * 60 * 24) ; $thedaybefore = date("Y-m-d",time() - 60 * 60 * 48); ?>
+<h3>or</h3> <form action="./daily/nmc_daily.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $today ;?>" name="day" /> <input type="submit" value="today" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./daily/nmc_daily.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $yesterday ;?>" name="day" /> <input type="submit" value="yesterday" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./daily/nmc_daily.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $yesterday ;?>" name="day" /> <input type="submit" value="the day before" /> </form>
+</td>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Namecoin historical data graphs</a>
-          <div class="btn-group pull-right">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+</tr>
+</table>
 
-		<i class="icon-arrow-down"></i> Other services
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Bitcoin news</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Bitcoin Services</a></li>
-            </ul>
-          </div>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+<h2>monthly data</h2>
+<table>
+<tr><td>
+<div class="demo">
+<form action="./monthly/nmc_monthly.php" method="post">
+<label for="month">Choose month</label>
+<input type="text" id="month" name="month" class="datepicker" />
+<br />Optionnaly choose the <label for="xsize2">width</label>
+<input type="text" class="xsize" id="xsize2" name="xsize"  value="800" />
+<br />and <label for="ysize2">Height</label> for your graph
+<input type="text" class="ysize" id="ysize2" name="ysize" value="600" />
+<input type="submit" value="Go !" />
+</form>
+<b> max size for graphs is 1024x768 </b>
+</div>
+</td>
+<td>
+ <?php $thismonth= date("Y-m"); $lastmonth=date("Y-m",time() - 60 * 60 * 24 * 30) ; $themonthbefore = date("Y-m",time() - 60 * 60 * 24 * 60); ?>
+<h3>or</h3> <form action="./monthly/nmc_monthly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $thismonth;?>" name="month" /> <input type="submit" value="this month" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./monthly/nmc_monthly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $lastmonth;?>" name="month" /> <input type="submit" value="last month" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./monthly/nmc_monthly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $themonthbefore;?>" name="month" /> <input type="submit" value="the month before" /> </form>
+</td>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Quicklinks</li>
-              <li><a href="#">Today</a></li>
-              <li><a href="#">Yesterday</a></li>
-              <li class="active"><a href="#">This month</a></li>
-              <li><a href="#">This year(monthly)</a></li>
-              <li><a href="#">This year(wekly)</a></li>
-              <li><a href="#">alltime</a></li>
-              <li class="nav-header">Forms</li>
-              <li><a href="#">Daily</a></li>
-              <li><a href="#">Weekly</a></li>
-              <li><a href="#">Monthly</a></li>
-              <li><a href="#">Yearly</a></li>
-              <li class="nav-header">Sidebar</li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span10">
-          <div class="hero-unit">
-            <h1>Today</h1>
-            <p>namecoin graph for today
-	    </p>
-            <p><a class="btn btn-primary btn-large">daily graph form &raquo;</a></p>
-          </div>
-          <div class="row-fluid">
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-          <div class="row-fluid">
-            <div class="span2">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span2">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span2">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-        </div><!--/span-->
-      </div><!--/row-->
+</tr>
+</table>
 
-      <hr>
 
-      <footer>
-        <p>&copy; Company 2012</p>
-      </footer>
+<h2>yearly data, per month</h2>
+<table><tr>
+<td>
+<div class="demo">
+<form action="./yearly/nmc_yearly.php" method="post">
+<label for="year">choose year</label>
+<input type="text" id="year" name="year" class="datepicker" />
+<br />Optionnaly choose the <label for="xsize3">width</label>
+<input type="text" class="xsize" id="xsize3" name="xsize" value="800" />
+<br />and <label for="ysize3">Height</label> for your graph
+<input type="text" class="ysize" id="ysize3" name="ysize" value="600"  />
+<input type="submit" value="go !" />
+</form>
+<b> max size for graphs is 1024x768 </b>
+</div>
+</td>
+<td>
+ <?php $thisyear= date("Y"); $lastyear=date("Y",time() - 60 * 60 * 24 * 365) ; $theyearbefore = date("Y",time() - 60 * 60 * 24 * 730); ?>
+<h3>or</h3> <form action="./yearly/nmc_yearly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $thisyear;?>" name="year" /> <input type="submit" value="this year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $lastyear;?>" name="year" /> <input type="submit" value="last year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearly.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $theyearbefore;?>" name="year" /> <input type="submit" value="the year before" /> </form>
+</td>
+</tr>
+</table>
 
-    </div><!--/.fluid-container-->
+<h2>yearly data, per week</h2>
+<table><tr>
+<td>
+<div class="demo">
+<form action="./yearly/nmc_yearlyw.php" method="post">
+<label for="year2">choose year</label>
+<input type="text" id="year2" name="year2" class="datepicker" />
+<br />Optionnaly choose the <label for="xsize4">width</label>
+<input type="text" class="xsize" id="xsize4" name="xsize" value="800" />
+<br />and <label for="ysize4">Height</label> for your graph
+<input type="text" class="ysize" id="ysize4" name="ysize" value="600"  />
+<input type="submit" value="go !" />
+</form>
+<b> max size for graphs is 1024x768 </b>
+</div>
+</td>
+<td>
+ <?php $thisyear= date("Y"); $lastyear=date("Y",time() - 60 * 60 * 24 * 365) ; $theyearbefore = date("Y",time() - 60 * 60 * 24 * 730); ?>
+<h3>or</h3> <form action="./yearly/nmc_yearlyw.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $thisyear;?>" name="year2" /> <input type="submit" value="this year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearlyw.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $lastyear;?>" name="year2" /> <input type="submit" value="last year" /> </form>
+</td>
+<td>
+ <h3>or</h3> <form action="./yearly/nmc_yearlyw.php" method="post"> <input type="hidden" value="800" name="xsize1" /> <input type="hidden" value="600" name="ysize1" /><input type="hidden" value="<?php echo $theyearbefore;?>" name="year2" /> <input type="submit" value="the year before" /> </form>
+</td>
+</tr>
+</table>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./js.my/jquery.js"></script>
-    <script src="./js.my/bootstrap-transition.js"></script>
-    <script src="./js.my/bootstrap-alert.js"></script>
-    <script src="./js.my/bootstrap-modal.js"></script>
-    <script src="./js.my/bootstrap-dropdown.js"></script>
-    <script src="./js.my/bootstrap-scrollspy.js"></script>
-    <script src="./js.my/bootstrap-tab.js"></script>
-    <script src="./js.my/bootstrap-tooltip.js"></script>
-    <script src="./js.my/bootstrap-popover.js"></script>
-    <script src="./js.my/bootstrap-button.js"></script>
-    <script src="./js.my/bootstrap-collapse.js"></script>
-    <script src="./js.my/bootstrap-typeahead.js"></script>
+<h2>(beta) alltime graph, per month</h2>
+<div class="demo">
+<a href="http://namecoin.gw.gd/alltime/nmc_alltime.php">Alltime historical namecoin graph</a>
+</div>
 
-  </body>
+<?php include("footer.php"); ?>
+</body>
 </html>
+
