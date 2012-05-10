@@ -5,7 +5,7 @@ include(dirname(__FILE__). "/../class/pImage.class.php");
 include(dirname(__FILE__). "/../class/pStock.class.php");
 include(dirname(__FILE__). "/nmcload.php");
 
-function buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale  )
+function buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale, $date, $type, $imagefilename  )
 {
 
 //include("../cfg/nmcgraph_cfg.php");
@@ -80,8 +80,10 @@ $mystockChart->drawStockChart();
 /* Render the picture (choose the best way) */
 //$myPicture->autoOutput("pictures/example.drawStockChart.png");
 $myPicture->render($imagefilename);
+$current_time = time();
 $graphgendate = $current_time;
 
+return $graphgendate;
 
 }
 ?>

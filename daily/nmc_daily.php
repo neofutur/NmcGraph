@@ -46,7 +46,7 @@ load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
 
 //printf("minscale: $minscale maxscale: $maxscale <br />\n");
 
-$graphgendate = buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale  );
+$graphgendate = buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale, $date, $type, $imagefilename  );
 
 }
 renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message,$cached );
