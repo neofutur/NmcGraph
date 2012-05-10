@@ -10,6 +10,7 @@ if ( isset( $_POST ) && isset( $_POST["day"]) )
 { $date=$_POST["day"]; }
 else if ( isset( $_GET ) && isset( $_GET["day"] ) )
 { $date=$_GET["day"]; }
+
 if ( !checkdate(substr($date,5,2),substr($date,8.2),substr($date,0,4))) { echo "wrong date : ".$date; exit;}
 
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 )
