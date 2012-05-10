@@ -17,7 +17,8 @@ $filename = "../data/$type/namecoin_$date.csv";
 //printf("filename : $filename <br />\n"); exit;
 if ( file_exists($filename ) )
 { $csvfile=fopen ($filename,"r") or die("can't open file"); }
-else {echo "wrong date : ".$date; exit;}
+else {echo "no data for : ".$date; exit;}
+
 //echo $type;exit;
 /*
 if ( $type == "daily" )   loadfile   ($MyData, $csvfile, $date, $minscale, $maxscale, $interval);
@@ -28,14 +29,7 @@ if ( $type == "yearly" )  loadfile   ($MyData, $csvfile, $date, $minscale, $maxs
 //printf("$MyData, $csvfile, $date, $minscale, $maxscale, $interval");
 loadfile   ($MyData, $csvfile, $date, $minscale, $maxscale, $interval);
 fclose($csvfile);
-//var_dump($MyData);exit;
-//printf ("apres load");
-//printf("minscale: $minscale maxscale: $maxscale <br />\n");
-
-
-//printf("minscale: $minscale maxscale: $maxscale <br />\n");
-
-//var_dump($rawdata);
+//echo "<pre>"; var_dump($MyData); echo "</pre";exit;
 
 /*
 if ( $type == "hourly" )

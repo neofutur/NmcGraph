@@ -1,10 +1,10 @@
 1
 fix labels on the yearly X scale
-add caching
+better caching ( data cache and image size cache )
+
 2
-(done)be able to choose graph size
-(done) GET support
 adding a volume graph under the price graph
+adding market depth graph
 
 3
 add weekly data

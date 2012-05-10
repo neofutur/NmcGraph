@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php
 include("lib/checkcache.php");
-include("cfg/nmcgraph_cfg.php");
+//include("cfg/nmcgraph_cfg.php");
 include("lib/buildgraph.php");
+include("lib/showgraph.php");
 ?>
 <html lang="en">
   <head>
@@ -96,13 +97,21 @@ include("lib/buildgraph.php");
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
+<?php
+ $today= date("Y-m-d"); $yesterday=date("Y-m-d",time() - 60 * 60 * 24) ; $thedaybefore = date("Y-m-d",time() - 60 * 60 * 48); 
+ $thismonth= date("Y-m"); $lastmonth=date("Y-m",time() - 60 * 60 * 24 * 30) ; $themonthbefore = date("Y-m",time() - 60 * 60 * 24 * 60);
+ $thisyear= date("Y"); $lastyear=date("Y",time() - 60 * 60 * 24 * 365) ; $theyearbefore = date("Y",time() - 60 * 60 * 24 * 730);
+?>
         <div class="span10">
           <div class="hero-unit">
-            <h1>Today</h1>
-            <p>namecoin graph for today
-	    </p>
+            <h2>Daily graphs</h2>
+            <p>namecoin graph for today <?php echo $today; ?> </p>
+
 <?php
-$date="2012-05-10";
+ $html_graph = showgraph( $today, 640, 480, "daily", "1-hour" );
+
+/*
+$date=$today;
 $xsize="640";$ysize="480";
 $minscale=null; $maxscale=null;
 $type="daily"; $interval="1-hour";
@@ -121,7 +130,9 @@ if ($graphgendate = checkcache( $imagefilename) )
 else
 {
  $cached=false;
+*/
 /* Create and populate the pData object */
+/*
 $MyData = new pData();
 load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
 //var_dump($MyData);
@@ -131,17 +142,21 @@ load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
 $graphgendate = buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale, $date, $type, $imagefilename  );
 
 }
-echo"<img alt=\"".$altimage."\" src=".$imagepath."/>";
+*/
+echo $html_graph;
+
+//echo"<img alt=\"".$altimage."\" src=".$imagepath."/>";
+
 ?>
             <p><a class="btn btn-primary btn-large">daily graph form &raquo;</a></p>
           </div>
           <div class="row-fluid">
-            <div class="span4">
-              <h2>Heading</h2>
+            <div class="span6">
+              <h2>Yesterday</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
-            <div class="span4">
+            <div class="span6">
               <h2>Heading</h2>
               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
               <p><a class="btn" href="#">View details &raquo;</a></p>

@@ -10,6 +10,7 @@ if ( isset( $_POST ) && isset( $_POST["day"]) )
 { $date=$_POST["day"]; }
 else if ( isset( $_GET ) && isset( $_GET["day"] ) )
 { $date=$_GET["day"]; }
+else $date=date("Y-m-d");
 
 if ( !checkdate(substr($date,5,2),substr($date,8.2),substr($date,0,4))) { echo "wrong date : ".$date; exit;}
 

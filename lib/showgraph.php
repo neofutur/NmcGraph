@@ -30,7 +30,7 @@ load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
 $graphgendate = buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale, $date, $type, $imagefilename  );
 
 }
- $html_code="<img alt=\"".$altimage."\" src=".$imagepath."/>";
+ $html_code="<img alt=\"".$altimage."\" src=".$imagepath." />";
 
  return $html_code;
 }

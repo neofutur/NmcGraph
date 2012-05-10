@@ -14,7 +14,7 @@ function buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale, $date
 $MyData = new pData(); 
 load_nmc_data($MyData, $date, $type, $minscale, $maxscale);
 //var_dump($MyData);
-
+//echo $minscale." ".$maxscale; exit;
 //printf("minscale: $minscale maxscale: $maxscale <br />\n");
 
 //buildgraph( $MyData, $xsize, $ysize, $title  );
@@ -40,7 +40,7 @@ $myPicture->drawGradientArea(0,0,$xsize,$ysize,DIRECTION_VERTICAL,$Settings);
 $myPicture->drawRectangle(0,0,$xsize-1,$ysize-1,array("R"=>0,"G"=>0,"B"=>0));
  
 /* Write the title */
-$myPicture->setFontProperties(array("FontName"=>"../../fonts/verdana.ttf","FontSize"=>9));
+$myPicture->setFontProperties(array("FontName"=>dirname(__FILE__). "/../../fonts/verdana.ttf","FontSize"=>9));
 $myPicture->drawText(70,45,$title,array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMLEFT));
  
 /* Draw the 1st scale */
