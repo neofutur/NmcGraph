@@ -1,11 +1,5 @@
 <?php
 
-/*include("../../class/pData.class.php");
-include("../../class/pDraw.class.php");
-include("../../class/pImage.class.php");
-include("../../class/pStock.class.php");
-include("../lib/nmcload.php");
-*/
 include("../lib/renderpage.php");
 include("../lib/checkcache.php");
 include("../cfg/nmcgraph_cfg.php");
@@ -41,11 +35,6 @@ $message="daily graph is cached one hour";
 if ($graphgendate = checkcache( $imagefilename) )
 {
  $cached=true;
-
-//$current_time = time(); $expire_time = 3600; $file_time = @filemtime($imagefilename);
-//if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
-// //echo 'returning from cached file';
-// $graphgendate = $file_time;
 }
 else
 {
@@ -62,9 +51,4 @@ $graphgendate = buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale
 }
 renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message,$cached );
 
-/*echo "<html><head></head><body>";
-echo "<a href=\"".$permalink."\"> permalink </a><br /><br />";
-echo"<img alt=\"".$altimage."\" src=".$imagepath."/>";
-echo "</body></html>";
-*/
 ?>
