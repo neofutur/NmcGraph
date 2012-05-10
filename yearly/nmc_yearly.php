@@ -1,12 +1,12 @@
 <?php
 
-include("../../class/pData.class.php");
-include("../../class/pDraw.class.php");
-include("../../class/pImage.class.php");
-include("../../class/pStock.class.php");
-include("../lib/nmcload.php");
-include("../lib/renderpage.php");
-include("../cfg/nmcgraph_cfg.php");
+include(dirname(__FILE__). "/../../class/pData.class.php");
+include(dirname(__FILE__). "/../../class/pDraw.class.php");
+include(dirname(__FILE__). "/../../class/pImage.class.php");
+include(dirname(__FILE__). "/../../class/pStock.class.php");
+include(dirname(__FILE__). "/../lib/nmcload.php");
+include(dirname(__FILE__). "/../lib/renderpage.php");
+include(dirname(__FILE__). "/../cfg/nmcgraph_cfg.php");
 
 $date="";
 if ( isset( $_POST ) && isset( $_POST["year"] ) )

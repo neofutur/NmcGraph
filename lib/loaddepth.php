@@ -1,5 +1,5 @@
 <?php
-require_once("../lib/getdepth.php");
+require_once(dirname(__FILE__). "/getdepth.php");
 
 //$minscale=0;$maxscale=0;
 

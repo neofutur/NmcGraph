@@ -1,9 +1,9 @@
 <?php
-include("../../class/pData.class.php");
-include("../../class/pDraw.class.php");
-include("../../class/pImage.class.php");
-include("../../class/pStock.class.php");
-include("../lib/nmcload.php");
+include(dirname(__FILE__). "/../class/pData.class.php");
+include(dirname(__FILE__). "/../class/pDraw.class.php");
+include(dirname(__FILE__). "/../class/pImage.class.php");
+include(dirname(__FILE__). "/../class/pStock.class.php");
+include(dirname(__FILE__). "/nmcload.php");
 
 function buildgraph( $MyData, $xsize, $ysize, $title,$minscale, $maxscale  )
 {

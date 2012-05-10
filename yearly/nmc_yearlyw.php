@@ -1,12 +1,12 @@
 <?php
 
-include("../../class/pData.class.php");
-include("../../class/pDraw.class.php");
-include("../../class/pImage.class.php");
-include("../../class/pStock.class.php");
-include("../lib/nmcloadtest.php");
-include("../lib/renderpage.php");
-include("../cfg/nmcgraph_cfg.php");
+include(dirname(__FILE__). "/../../class/pData.class.php");
+include(dirname(__FILE__). "/../../class/pDraw.class.php");
+include(dirname(__FILE__). "/../../class/pImage.class.php");
+include(dirname(__FILE__). "/../../class/pStock.class.php");
+include(dirname(__FILE__). "/../lib/nmcloadtest.php");
+include(dirname(__FILE__). "/../lib/renderpage.php");
+include(dirname(__FILE__). "/../cfg/nmcgraph_cfg.php");
 
 $date="";
 //var_dump($_POST);exit;

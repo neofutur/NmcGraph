@@ -1,9 +1,9 @@
 <?php
 
-include("../lib/renderpage.php");
-include("../lib/checkcache.php");
-include("../cfg/nmcgraph_cfg.php");
-include("../lib/buildgraph.php");
+include(dirname(__FILE__). "/../lib/renderpage.php");
+include(dirname(__FILE__). "/../lib/checkcache.php");
+include(dirname(__FILE__). "/../cfg/nmcgraph_cfg.php");
+include(dirname(__FILE__). "/../lib/buildgraph.php");
 
 //var_dump($_POST);exit;
 if ( isset( $_POST ) && isset( $_POST["day"]) )

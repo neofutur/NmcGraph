@@ -1,5 +1,5 @@
 <?php
-require_once("array2csv.php");
+require_once(dirname(__FILE__)."/array2csv.php");
 
 function getdepth(&$bids, &$asks )
 {

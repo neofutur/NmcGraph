@@ -1,8 +1,8 @@
 <?php
 
-require_once("./array2csv.php");
-require_once("./csvtools.php");
-require_once("./gettrades.php");
+require_once(dirname(__FILE__). "/array2csv.php");
+require_once(dirname(__FILE__). "/csvtools.php");
+require_once(dirname(__FILE__). "/gettrades.php");
 
 $first_trade_array=array();
 $second_trade_array=null;
