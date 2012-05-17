@@ -9,16 +9,16 @@ $second_trade_array=null;
 
  // get the json from http://exchange.bitparking.com:8080/api/t
 
- $opts = array(
- 'http'=> array(
- 'method'=>   "GET",
- 'user_agent'=>    "MozillaXYZ/1.0"));
- $context = stream_context_create($opts);
- $json = file_get_contents('http://exchange.bitparking.com:8080/api/t', false, $context);
+// $opts = array(
+// 'http'=> array(
+// 'method'=>   "GET",
+// 'user_agent'=>    "MozillaXYZ/1.0"));
+// $context = stream_context_create($opts);
+// $json = file_get_contents('http://exchange.bitparking.com:8080/api/t', false, $context);
 
  //have the json
- $new_trade_array=json2array($json);
- $new_trade_array=array_reverse($new_trade_array);
+// $new_trade_array=json2array($json);
+// $new_trade_array=array_reverse($new_trade_array);
  //var_dump($new_trade_array);
  $new_trade_array = gettrades();
 
@@ -27,6 +27,7 @@ $second_trade_array=null;
 
   // one or two dates in the json ?
  $first_date =split_by_date  ($new_trade_array,$first_trade_array, $second_trade_array );
+ echo "$first_date\n";
  $first_trade_array=array_reverse($first_trade_array);
  if ( $second_trade_array ) $second_trade_array =array_reverse($second_trade_array);
 
@@ -35,16 +36,18 @@ $second_trade_array=null;
  {
   $next_day=substr($first_date,8,2)+1;
   $second_date=substr($first_date,0,8).$next_day;
+  $second_date=sprintf ( "%02d",  substr($first_date,0,8).$next_day );
+  echo "$second_date\n";
   //echo"second date = $second_date\n";
  }
 
  $firstdate_month= substr($first_date,0,7);
  $firstdate_year = substr($first_date,0,4);
 
- $filename_daily    = "../data/daily/namecoin_$first_date.csv";        //namecoin_2011-10-05.csv
- $filename_monthly  = "../data/monthly/namecoin_$firstdate_month.csv"; //namecoin_2011-12.csv
- $filename_yearly   = "../data/yearly/namecoin_$firstdate_year.csv";   //namecoin_2012.csv
- $filename_alltime  = "../data/alltime/namecoin_alltime.csv";
+ $filename_daily    = dirname(__FILE__). "/../data/daily/namecoin_$first_date.csv";        //namecoin_2011-10-05.csv
+ $filename_monthly  = dirname(__FILE__). "/../data/monthly/namecoin_$firstdate_month.csv"; //namecoin_2011-12.csv
+ $filename_yearly   = dirname(__FILE__). "/../data/yearly/namecoin_$firstdate_year.csv";   //namecoin_2012.csv
+ $filename_alltime  = dirname(__FILE__). "/../data/alltime/namecoin_alltime.csv";
 
  //printf("files : $filename_daily $filename_monthly $filename_yearly \n");
  update_csv_file($filename_daily,$first_trade_array);
@@ -60,10 +63,10 @@ $second_trade_array=null;
   $seconddate_month=substr($second_date,0,7);
   $seconddate_year=substr($second_date,0,4);
 
-  $filename_daily     = "../data/daily/namecoin_$second_date.csv";        //namecoin_2011-10-05.csv
-  $filename_monthly   = "../data/monthly/namecoin_$seconddate_month.csv"; //namecoin_2011-12.csv
-  $filename_yearly    = "../data/yearly/namecoin_$seconddate_year.csv";   //namecoin_2012.csv
-  $filename_alltime   = "../data/yearly/namecoin_$seconddate_year.csv";   //namecoin_2012.csv
+  $filename_daily     = dirname(__FILE__). "/../data/daily/namecoin_$second_date.csv";        //namecoin_2011-10-05.csv
+  $filename_monthly   = dirname(__FILE__). "/../data/monthly/namecoin_$seconddate_month.csv"; //namecoin_2011-12.csv
+  $filename_yearly    = dirname(__FILE__). "/../data/yearly/namecoin_$seconddate_year.csv";   //namecoin_2012.csv
+  $filename_alltime   = dirname(__FILE__). "/../data/yearly/namecoin_$seconddate_year.csv";   //namecoin_2012.csv
 
  //printf("files : $filename_daily $filename_monthly $filename_yearly \n");
  update_csv_file($filename_daily,$first_trade_array);
