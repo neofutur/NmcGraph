@@ -15,32 +15,35 @@
 <b>BitCoin :</b>
  </td>
  <td>
- <a href="http://bitcoin.gw.gd" > News</a>
+  <a href="http://bitcoin.gw.gd" > News</a>
  </td>
  <td>
- <a href="http://gw.gd/bcservices" > Services</a>
-</td>
-<td>
- <a href="http://gw.gd/ticker_usd"> Ticker</a>
-</td>
-<td>
- <a href="https://bitcointalk.org/index.php?topic=68205" > Price</a>
-</td>
-<td>
- <a href="http://gw.gd/stats.php#lastday" > Hotlinks</a>
-</td>
-<td>
- <a href="http://p.gw.gd" > Paste</a>
-</td>
-<td>
- <a href="http://pixels.bitcoin.gw.gd/" > Pixels</a> 
-</td>
-<td>
- <a href="https://github.com/neofutur" > Github</a>
-</td>
-<td>
- <a href="http://namecoin.gw.gd" > Namecoin</a>
-</td>
+  <a href="http://gw.gd/bcservices" > Services</a>
+ </td>
+ <td>
+  <a href="http://gw.gd/bitcoin_vps" > VPS </a>
+ </td>
+ <td>
+  <a href="http://gw.gd/bc_poker"> Poker</a>
+ </td>
+ <td>
+  <a href="https://bitcointalk.org/index.php?topic=68205" > Price</a>
+ </td>
+ <td>
+  <a href="http://gw.gd/stats.php#lastday" > Hotlinks</a>
+ </td>
+ <td>
+  <a href="http://p.gw.gd" > Paste</a>
+ </td>
+ <td>
+  <a href="http://pixels.bitcoin.gw.gd/" > Pixels</a> 
+ </td>
+ <td>
+  <a href="https://github.com/neofutur" > Github</a>
+ </td>
+ <td>
+  <a href="http://namecoin.gw.gd" > Namecoin</a>
+ </td>
 <td rowspan="3">
  <table><tr>
  <td>
@@ -52,8 +55,8 @@
 </tr></table>
 </td></tr>
 <tr>
-
-<td colspan="8" rowspan="2" style="text-align:center;border-width: 0px; padding: 0px;">
+<td></td>
+<td colspan="9" rowspan="2" style="text-align:center;border-width: 0px; padding: 0px;">
 <div style="margin-left: auto; margin-right: auto;">
 &nbsp;<a href="https://bitcointalk.org/index.php?topic=68205" style="text-align:center;" ><img src="http://gw.gd/ticker" alt="Current BTC ticker from mtgox" style="display: block;   margin-left: auto;   margin-right: auto;" /></a>
 </div>

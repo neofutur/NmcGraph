@@ -27,7 +27,7 @@ $second_trade_array=null;
 
   // one or two dates in the json ?
  $first_date =split_by_date  ($new_trade_array,$first_trade_array, $second_trade_array );
- echo "$first_date\n";
+ //echo "$first_date\n";
  $first_trade_array=array_reverse($first_trade_array);
  if ( $second_trade_array ) $second_trade_array =array_reverse($second_trade_array);
 
@@ -37,7 +37,7 @@ $second_trade_array=null;
   $next_day=substr($first_date,8,2)+1;
   $second_date=substr($first_date,0,8).$next_day;
   $second_date=sprintf ( "%02d",  substr($first_date,0,8).$next_day );
-  echo "$second_date\n";
+  //echo "$second_date\n";
   //echo"second date = $second_date\n";
  }
 

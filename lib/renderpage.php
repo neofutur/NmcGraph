@@ -15,7 +15,7 @@ else
  $cache_message="new graph generated now";
 echo "<a href=\"".$permalink."\"> permalink </a> - graph generated on : <b>$dategen</b> - ";
 if ( isset ( $message ) ) echo $message." -  $cache_message "."<br /><br /><br />";
-echo"<img alt=\"".$altimage."\" src=".$imagepath."/>";
+echo"<img alt=\"".$altimage."\" src=".$imagepath." />";
 include(dirname(__FILE__). "/../footer.php");
 echo "</body></html>";
 }
