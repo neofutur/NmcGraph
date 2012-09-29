@@ -24,17 +24,19 @@ if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) 
 else $ysize=600;
 
 $minscale=null; $maxscale=null;
-$type="monthly"; $interval="1-day";
+
+$type="monthly"; $interval="1-hour";
+$message="monthly graph is cached one hour";
+
 $imagefilename="../cache/monthly/monthly_$date.png";
 $imagepath="/cache/monthly/monthly_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/monthly/nmc_monthly.php?month=".$date;
 $title=$type." namecoin historic data graph for date $date";
 $graphgendate = "";
-$message="monthly graph is cached one day";
 
 //echo $date;exit;
-$current_time = time(); $expire_time = 3600*24; $file_time = @filemtime($imagefilename);
+$current_time = time(); $expire_time = 3600*1; $file_time = @filemtime($imagefilename);
 if(file_exists($imagefilename) && ($current_time - $expire_time < $file_time)) {
  //echo 'returning from cached file';
  $graphgendate = $file_time;
