@@ -25,7 +25,7 @@ else $ysize=600;
 
 $minscale=null; $maxscale=null;
 
-$type="monthly"; $interval="1-hour";
+$type="monthly"; $interval="1-day";
 $message="monthly graph is cached one hour";
 
 $imagefilename="../cache/monthly/monthly_$date.png";

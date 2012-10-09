@@ -10,7 +10,7 @@ function load_nmc_data($MyData, $date = "2011-06-09", $type="daily", &$minscale,
 //           [4]=> string(26) "2011-06-09 00:27:19.698726" } 
 //array(5) { [0]=> string(3) "199" [1]=> string(4) "sell" [2]=> string(18) "3.0000000000000000" [3]=> string(22) "0.00690000000000000000" [4]=> string(26) "2011-06-09 01:12:29.363403" }
 
-//echo $type;
+//echo "$date $type $minscale $maxscale $interval"; exit;
 //exit;
 //printf ("avant load");
 $filename = "../data/$type/namecoin_$date.csv";
