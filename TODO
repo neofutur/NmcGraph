@@ -1,6 +1,7 @@
 1
 fix labels on the yearly X scale
 better caching ( data cache and image size cache )
+add "please refresh" by ip + navigating "next day", "day before" . . . 
 
 2
 adding a volume graph under the price graph
