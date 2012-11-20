@@ -21,12 +21,26 @@ else $xsize=800;
 if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) && $_POST["ysize"] <=768 ) { $ysize = $_POST["ysize"]; }
 else $ysize=600;
 
+$month=substr($date,5,2);
+$day=substr($date,8.2);
+$year=substr($date,0,4);
+$date_yearbefore = mktime(0, 0, 0, 2, 2, $year-1);
+$date_nextyear = mktime(0, 0, 0, 2, 2, $year+1);
+$date_yearbefore=date('Y', $date_yearbefore);
+$date_nextyear=date('Y', $date_nextyear);
+
 $minscale=null; $maxscale=null;
 $type="yearly"; $interval="1-week";
 $imagefilename="../cache/yearlyw/yearly_$date.png";
 $imagepath="/cache/yearlyw/yearly_$date.png";
 $altimage=$type." namecoin graph for date $date";
-$permalink=$siteurl."/yearly/nmc_yearlyw.php?year=".$date;
+$permalink=$siteurl."/yearly/nmc_yearlyw.php?year2=".$date;
+
+$link_yearbefore=$siteurl."/yearly/nmc_yearlyw.php?year2=".$date_yearbefore;
+$link_nextyear=$siteurl."/yearly/nmc_yearlyw.php?year2=".$date_nextyear;
+$navigation="<a href=".$link_yearbefore.">Year before</a> - <a href=".$link_nextyear.">Next year</a>";
+
+
 $title=$type." ( by week ) namecoin historic data graph for date $date";
 $graphgendate = "";
 $message="yearly graph by week is cached one week";
@@ -105,6 +119,6 @@ $mystockChart->drawStockChart();
 $myPicture->render($imagefilename);
 $graphgendate = $current_time;
 }
-renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message );
+renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message, false, $navigation );
 
 ?>

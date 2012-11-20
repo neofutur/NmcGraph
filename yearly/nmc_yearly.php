@@ -15,6 +15,14 @@ else if (  isset( $_GET )  && isset( $_GET["year"] ) )
 { $date = $_GET["year"]; }
 if ( !checkdate(1,1,substr($date,0.4))) { echo "wrong date : ".$date; exit;}
 
+$month=substr($date,5,2);
+$day=substr($date,8.2);
+$year=substr($date,0,4);
+$date_yearbefore = mktime(0, 0, 0, 2, 2, $year-1);
+$date_nextyear = mktime(0, 0, 0, 2, 2, $year+1);
+$date_yearbefore=date('Y', $date_yearbefore);
+$date_nextyear=date('Y', $date_nextyear);
+
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 ) { $xsize = $_POST["xsize"]; }
 else $xsize=800;
 if ( isset( $_POST ) && isset( $_POST["ysize"] ) && is_numeric($_POST["ysize"]) && $_POST["ysize"] <=768 ) { $ysize = $_POST["ysize"]; }
@@ -26,6 +34,12 @@ $imagefilename="../cache/yearly/yearly_$date.png";
 $imagepath="/cache/yearly/yearly_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/yearly/nmc_yearly.php?year=".$date;
+
+$link_yearbefore=$siteurl."/yearly/nmc_yearly.php?year=".$date_yearbefore;
+$link_nextyear=$siteurl."/yearly/nmc_yearly.php?year=".$date_nextyear;
+$navigation="<a href=".$link_yearbefore.">Year before</a> - <a href=".$link_nextyear.">Next year</a>";
+
+
 $title=$type." ( by month ) namecoin historic data graph for date $date";
 $graphgendate = "";
 $message="yearly graph is cached one day";
@@ -105,7 +119,7 @@ $myPicture->render($imagefilename);
 $graphgendate = $current_time;
 }
 
-renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message );
+renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message, false, $navigation );
 
 
 ?>
