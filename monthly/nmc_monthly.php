@@ -16,6 +16,13 @@ else if (  isset( $_GET )  && isset( $_GET["month"] ) )
 { $date = $_GET["month"]; }
 else $date = "2011-06";
 
+$month=substr($date,5,2);
+$year=substr($date,0,4);
+$date_monthbefore = mktime(0, 0, 0, $month-1, 2, $year);
+$date_nextmonth = mktime(0, 0, 0, $month+1, 2, $year);
+$date_monthbefore=date('Y-m', $date_monthbefore);
+$date_nextmonth=date('Y-m', $date_nextmonth);
+
 if ( !checkdate(substr($date,5,2),1,substr($date,0,4))) { echo "wrong date : ".$date; exit;}
 //echo "hi";
 if ( isset( $_POST ) && isset( $_POST["xsize"] ) && is_numeric($_POST["xsize"]) && $_POST["xsize"] <=1024 ) { $xsize = $_POST["xsize"]; }
@@ -32,6 +39,11 @@ $imagefilename="../cache/monthly/monthly_$date.png";
 $imagepath="/cache/monthly/monthly_$date.png";
 $altimage=$type." namecoin graph for date $date";
 $permalink=$siteurl."/monthly/nmc_monthly.php?month=".$date;
+
+$link_monthbefore=$siteurl."/monthly/nmc_monthly.php?month=".$date_monthbefore;
+$link_nextmonth=$siteurl."/monthly/nmc_monthly.php?month=".$date_nextmonth;
+$navigation="<a href=".$link_monthbefore.">Month before</a> - <a href=".$link_nextmonth.">Next Month</a>";
+
 $title=$type." namecoin historic data graph for date $date";
 $graphgendate = "";
 
@@ -101,6 +113,6 @@ $mystockChart->drawStockChart();
 $myPicture->render($imagefilename);
 $graphgendate = $current_time;
 }
-renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message );
+renderpage($title, $permalink, $altimage, $imagepath, $graphgendate, $message, false, $navigation );
 
 ?>
