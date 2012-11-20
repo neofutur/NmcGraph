@@ -1,6 +1,6 @@
 <?php
 
-function renderpage($title, $permalink, $altimage, $imagepath, $graphdate, $message="", $cached=false )
+function renderpage($title, $permalink, $altimage, $imagepath, $graphdate, $message="", $cached=false, $navigation="" )
 {
 $dategen = date ( "Y-m-d G:i:s T Y", $graphdate );
 
@@ -14,7 +14,8 @@ if ( $cached == true )
 else
  $cache_message="new graph generated now";
 echo "<a href=\"".$permalink."\"> permalink </a> - graph generated on : <b>$dategen</b> - ";
-if ( isset ( $message ) ) echo $message." -  $cache_message "."<br /><br /><br />";
+if ( isset ( $message ) ) echo $message." -  $cache_message "."<br /><br />";
+echo $navigation."<br /><br />";
 echo"<img alt=\"".$altimage."\" src=".$imagepath." />";
 include(dirname(__FILE__). "/../footer.php");
 echo "</body></html>";
